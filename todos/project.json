@@ -1,0 +1,84 @@
+{
+  "name": "todos",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "todos/src",
+  "projectType": "application",
+  "tags": ["remote todos"],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "swc",
+        "outputPath": "dist/todos",
+        "index": "todos/src/index.html",
+        "baseHref": "/",
+        "main": "todos/src/main.ts",
+        "tsConfig": "todos/tsconfig.app.json",
+        "assets": ["todos/src/favicon.ico", "todos/src/assets"],
+        "styles": ["todos/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "todos/webpack.config.ts"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "todos/src/environments/environment.ts",
+              "with": "todos/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "todos/webpack.config.prod.ts"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "todos:build",
+        "hmr": true,
+        "port": 3000
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "todos:build:development"
+        },
+        "production": {
+          "buildTarget": "todos:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "todos:build",
+        "watch": false,
+        "port": 3000
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "todos:build:development"
+        },
+        "production": {
+          "buildTarget": "todos:build:production"
+        }
+      }
+    }
+  }
+}
