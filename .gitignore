@@ -33,9 +33,19 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+bun.lockb
 
 # System Files
 .DS_Store
 Thumbs.db
 
+#NX
 .nx/cache
+nx-cloud.env
+
+# Next.js
+.next
+out
+
+#React
+dist
