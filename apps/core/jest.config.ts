@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName: 'core',
-  preset: '../jest.preset.js',
+  preset: '../../jest.preset.js',
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nx/react/plugins/jest',
     '^.+\\.[tj]sx?$': [
@@ -15,5 +15,5 @@ export default {
     ],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../coverage/core',
+  coverageDirectory: '../../coverage/apps/core',
 };

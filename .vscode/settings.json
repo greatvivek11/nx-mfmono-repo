@@ -1,0 +1,31 @@
+// Workspace settings
+{
+  // The following will hide the js and map files in the editor
+  "files.exclude": {
+    ".github": true,
+    ".vscode": false,
+    "*nx*": true,
+    "*.eslint*": true,
+    ".prettierignore": true,
+    ".prettierrc": true,
+    "node_modules/": true,
+    "dist/": true,
+    "e2e/": false,
+    ".gitignore": true,
+    "**/.gitkeep": true,
+    ".editorconfig": true,
+    "**/polyfills.ts": true,
+    "**/main.ts": false,
+    "**/tsconfig.base.json": true,
+    "**/tsconfig.spec.json": true,
+    "**/tslint.json": true,
+    "**/karma.conf.js": true,
+    "**/favicon.ico": true,
+    "**/browserslist": true,
+    "**/test.ts": true,
+    "pnpm-lock.yaml": true,
+    "pnpm-workspace.yaml": true,
+    "jest.*": true,
+    "biome.*": true
+  }
+}

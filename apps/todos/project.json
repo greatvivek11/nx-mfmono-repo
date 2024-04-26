@@ -1,9 +1,9 @@
 {
-  "name": "core",
-  "$schema": "../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "core/src",
+  "name": "todos",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/todos/src",
   "projectType": "application",
-  "tags": ["core"],
+  "tags": ["remote apps/todos"],
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
@@ -11,15 +11,15 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "swc",
-        "outputPath": "dist/core",
-        "index": "core/src/index.html",
+        "outputPath": "dist/apps/todos",
+        "index": "apps/todos/src/index.html",
         "baseHref": "/",
-        "main": "core/src/main.ts",
-        "tsConfig": "core/tsconfig.app.json",
-        "assets": ["core/src/favicon.ico", "core/src/assets"],
-        "styles": ["core/src/styles.css"],
+        "main": "apps/todos/src/main.ts",
+        "tsConfig": "apps/todos/tsconfig.app.json",
+        "assets": ["apps/todos/src/favicon.ico", "apps/todos/src/assets"],
+        "styles": ["apps/todos/src/styles.css"],
         "scripts": [],
-        "webpackConfig": "core/webpack.config.ts"
+        "webpackConfig": "apps/todos/webpack.config.ts"
       },
       "configurations": {
         "development": {
@@ -31,8 +31,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "core/src/environments/environment.ts",
-              "with": "core/src/environments/environment.prod.ts"
+              "replace": "apps/todos/src/environments/environment.ts",
+              "with": "apps/todos/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -41,7 +41,7 @@
           "namedChunks": false,
           "extractLicenses": true,
           "vendorChunk": false,
-          "webpackConfig": "core/webpack.config.prod.ts"
+          "webpackConfig": "apps/todos/webpack.config.prod.ts"
         }
       }
     },
@@ -49,16 +49,16 @@
       "executor": "@nx/react:module-federation-dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "core:build",
+        "buildTarget": "todos:build",
         "hmr": true,
-        "port": 3001
+        "port": 3000
       },
       "configurations": {
         "development": {
-          "buildTarget": "core:build:development"
+          "buildTarget": "todos:build:development"
         },
         "production": {
-          "buildTarget": "core:build:production",
+          "buildTarget": "todos:build:production",
           "hmr": false
         }
       }
@@ -67,16 +67,16 @@
       "executor": "@nx/web:file-server",
       "defaultConfiguration": "production",
       "options": {
-        "buildTarget": "core:build",
+        "buildTarget": "todos:build",
         "watch": false,
-        "port": 3001
+        "port": 3000
       },
       "configurations": {
         "development": {
-          "buildTarget": "core:build:development"
+          "buildTarget": "todos:build:development"
         },
         "production": {
-          "buildTarget": "core:build:production"
+          "buildTarget": "todos:build:production"
         }
       }
     }
